@@ -38,10 +38,28 @@ require('nightfox').setup({
       -- ...
     },
   },
-  palettes = {},
-  specs = {},
+  palettes = {
+--	  nightfox = {
+--		  blue = {bright = "#B97119"},
+--		  cyan = {bright = "#9DA8A5"},
+--	  },
+  },
+  specs = {
+	nightfox = {
+		syntax = {
+			number = "red",
+			string = "yellow",
+			operator = "#ABABAB",
+			conditional = "orange",
+			field = "white",
+			builtin1 = "#91AC86",
+		},
+	},
+  },
   groups = {},
 })
+
+
 
 -- setup must be called before loading
 vim.cmd("colorscheme nightfox")
