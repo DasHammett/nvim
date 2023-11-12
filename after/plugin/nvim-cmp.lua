@@ -14,7 +14,7 @@ cmp.setup {
 		{ name = 'path' },
 	},
 	mapping = {
-		["<Tab>"] = cmp.mapping(function(fallback)
+		["<C-Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
 			elseif has_words_before() then
@@ -23,7 +23,7 @@ cmp.setup {
 				fallback()
 			end
 		end, { "i", "s", "c" }),
-		["<Space>"] = cmp.mapping(function(fallback)
+		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then 
 				cmp.confirm({ select = true })
 			else
