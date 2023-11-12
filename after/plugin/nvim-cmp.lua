@@ -22,13 +22,20 @@ cmp.setup {
 			else
 				fallback()
 			end
-		end, { "i", "s" }),
+		end, { "i", "s", "c" }),
+		["<Space>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then 
+				cmp.confirm({ select = true })
+			else
+				fallback()
+			end
+		end, { "i", "s", "c" }),
 		["<S-Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
 			else fallback()
 			end
-		end, {"i", "s" }
+		end, {"i", "s", "c" }
 		),
 		["<C-k>"] = cmp.mapping({
 			i = function()
@@ -52,7 +59,7 @@ cmp.setup.cmdline('/', {
 	mapping = cmp.mapping.preset.cmdline(),
 	sources = {
 		{ name = 'buffer' }
-	}
+	},
 })
 cmp.setup.cmdline(':', {
 	mapping = cmp.mapping.preset.cmdline(),
@@ -65,5 +72,6 @@ cmp.setup.cmdline(':', {
 				ignore_cmds = { 'Man', '!' }
 			}
 		}
-	})
+	}),
+	
 })
