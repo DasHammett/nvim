@@ -6,54 +6,59 @@ local has_words_before = function()
 end
 
 cmp.setup {
-	sources = {
-		{ name = 'cmp_nvim_r' },
-		{ name = 'buffer' },
-		{ name = 'nvim_lua' },
-		{ name = 'nvim_lsp' },
-		{ name = 'path' },
-	},
-	mapping = {
-		["<Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_next_item()
-			elseif has_words_before() then
-				cmp.complete()
-			else
-				fallback()
-			end
-		end, { "i", "s", "c" }),
-		["<CR>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then 
-				cmp.confirm({ select = true })
-			else
-				fallback()
-			end
-		end, { "i", "s", "c" }),
-		["<S-Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_prev_item()
-			else fallback()
-			end
-		end, {"i", "s", "c" }
-		),
-		["<C-k>"] = cmp.mapping({
-			i = function()
-				if cmp.visible() then
-					cmp.abort()
-				else
-					cmp.complete()
-				end
-			end,
-			c = function()
-				if cmp.visible() then
-					cmp.close()
-				else
-					cmp.complete()
-				end
-			end,
-		}),
-	}
+    completion = { 
+        keyword_length = 2 
+    },
+    sources = {
+        { name = 'cmp_nvim_r' },
+        { name = 'buffer' },
+        { name = 'nvim_lua' },
+        { name = 'nvim_lsp' },
+        { name = 'path' },
+        { 
+        },
+        mapping = {
+            ["<Tab>"] = cmp.mapping(function(fallback)
+                if cmp.visible() then
+                    cmp.select_next_item()
+                elseif has_words_before() then
+                    cmp.complete()
+                else
+                    fallback()
+                end
+            end, { "i", "s", "c" }),
+            ["<CR>"] = cmp.mapping(function(fallback)
+                if cmp.visible() then 
+                    cmp.confirm({ select = true })
+                else
+                    fallback()
+                end
+            end, { "i", "s", "c" }),
+            ["<S-Tab>"] = cmp.mapping(function(fallback)
+                if cmp.visible() then
+                    cmp.select_prev_item()
+                else fallback()
+                end
+            end, {"i", "s", "c" }
+            ),
+            ["<C-k>"] = cmp.mapping({
+                i = function()
+                    if cmp.visible() then
+                        cmp.abort()
+                    else
+                        cmp.complete()
+                    end
+                end,
+                c = function()
+                    if cmp.visible() then
+                        cmp.close()
+                    else
+                        cmp.complete()
+                    end
+                end,
+            }),
+        }
+    }
 }
 cmp.setup.cmdline('/', {
 	mapping = cmp.mapping.preset.cmdline(),
